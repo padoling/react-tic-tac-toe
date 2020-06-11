@@ -1,68 +1,14 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React tic-tac-toe
 
-## Available Scripts
+React 공식 홈페이지의 tic-tac-toe 만들기를 따라한 뒤 몇 가지 기능 추가 및 수정한 버전
+> [React official tic-tac-toe](https://ko.reactjs.org/tutorial/tutorial.html)
 
-In the project directory, you can run:
+## 추가 및 수정 사항
+* 빙고가 완성된 경우 빙고에 해당하는 칸 색칠 ([commit #f643cda](https://github.com/padoling/react-tic-tac-toe/commit/f643cda8fd2636f5790ba1717d5a392d6577c1cf))
+* 각 단계에서 선택한 칸의 위치 좌표 형태로 표시([commit #ca0f367](https://github.com/padoling/react-tic-tac-toe/commit/ca0f36761e8249f05c56fef388cb670512aba4eb))
+* 현재 선택된 단계 표시([commit #7add4bf](https://github.com/padoling/react-tic-tac-toe/commit/7add4bf5de24d7d6ac3e5c04d75a0ead3a99d478))
+* 빙고판 렌더링 hard-coding에서 loop 사용 코드로 변경([commit #e092a18](https://github.com/padoling/react-tic-tac-toe/commit/e092a189d23d514d48eb7a26ebb001f099a91a5a))
+* 비겼을 경우 'Draw!' 표시([commit #6d31686](https://github.com/padoling/react-tic-tac-toe/commit/6d316865a5faebb2c809b705595ffca4f234bb41))
 
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## 실행해보기!
+> [Demo page](https://codepen.io/padoling/pen/wvMGMjV)(Codepen)
