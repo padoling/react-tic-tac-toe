@@ -53,3 +53,7 @@ ol, ul {
 .game-info {
   margin-left: 20px;
 }
+
+.current-move {
+  background: #eb886c;
+}
