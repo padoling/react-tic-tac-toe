@@ -18,6 +18,7 @@ class Board extends React.Component {
     const winnerLine = this.props.winnerLine;
     return (
       <Square
+        key={i}
         value={this.props.squares[i]}
         onClick={() => this.props.onClick(i)}
         winnerSquare={winnerLine && winnerLine.includes(i)}
@@ -32,7 +33,7 @@ class Board extends React.Component {
       for(let j=0; j<3; j++) {
         row.push(this.renderSquare(i*3 + j));
       }
-      board.push(<div className="board-row">{row}</div>);
+      board.push(<div key={i} className="board-row">{row}</div>);
     }
     return board;
   }
@@ -92,14 +93,12 @@ class Game extends React.Component {
 
     const moves = history.map((step, move) => {
       const num = step.currentSquare;
-      const rowcol = '(' + (parseInt(num/3) + 1) + ',' + (num%3 + 1) + ')';
-      const isCurrent = move === this.state.stepNumber;
       const desc = move ? 
-      'Go to move #' + move + ' location' + rowcol: 
+      'Go to move #' + move + ' location (' + (parseInt(num/3) + 1) + ',' + (num%3 + 1) + ')' :
       'Go to game start';
       return (
         <li key={move}>
-          <button className={isCurrent ? 'current-move' : ''} onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button className={move === this.state.stepNumber ? 'current-move' : ''} onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       );
     });
