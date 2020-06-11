@@ -4,8 +4,9 @@ import './index.css';
 
 // render <button>
 function Square(props) {
+  const className = 'square' + (props.winnerSquare ? ' winner-square' : '');
   return (
-    <button className="square" onClick={props.onClick}>
+    <button className={className} onClick={props.onClick}>
       {props.value}
     </button>
   );
@@ -14,10 +15,13 @@ function Square(props) {
 // render 9 squares
 class Board extends React.Component {
   renderSquare(i) {
+    const winnerLine = this.props.winnerLine;
     return (
       <Square
         value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)} />
+        onClick={() => this.props.onClick(i)}
+        winnerSquare={winnerLine && winnerLine.includes(i)}
+      />
     );
   }
 
@@ -84,7 +88,7 @@ class Game extends React.Component {
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
-    const winner = calculateWinner(current.squares);
+    const winnerStat = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Go to move #' + move : 'Go to game start';
@@ -96,8 +100,10 @@ class Game extends React.Component {
     });
 
     let status;
-    if(winner) {
-      status = 'Winner: ' + winner;
+    let winnerLine;
+    if(winnerStat) {
+      status = 'Winner: ' + winnerStat.winner;
+      winnerLine = winnerStat.winnerLine;
     } else {
       status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
     }
@@ -108,6 +114,7 @@ class Game extends React.Component {
           <Board 
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
+            winnerLine={winnerLine}
           />
         </div>
         <div className="game-info">
@@ -140,7 +147,10 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return {
+        winner: squares[a],
+        winnerLine: lines[i],
+      }
     }
   }
   return null;
