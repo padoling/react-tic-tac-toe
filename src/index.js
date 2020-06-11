@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-// render <button>
+// render square buttons
 function Square(props) {
   const className = 'square' + (props.winnerSquare ? ' winner-square' : '');
   return (
@@ -48,19 +48,21 @@ class Board extends React.Component {
   }
 }
 
-// render game board
+// render entire game board
 class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       history: [{
         squares: Array(9).fill(null),
+        currentSquare: null,
       }],
       stepNumber: 0,
       xIsNext: true,
     };
   }
 
+  // handle event when one of the square is clicked
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
     const current = history[history.length - 1];
@@ -72,12 +74,14 @@ class Game extends React.Component {
     this.setState({
       history: history.concat([{
         squares: squares,
+        currentSquare: i,
       }]),
       stepNumber: history.length,
       xIsNext: !this.state.xIsNext,
     });
   }
 
+  // jump to steps in history
   jumpTo(step) {
     this.setState({
       stepNumber: step,
@@ -91,7 +95,11 @@ class Game extends React.Component {
     const winnerStat = calculateWinner(current.squares);
 
     const moves = history.map((step, move) => {
-      const desc = move ? 'Go to move #' + move : 'Go to game start';
+      const num = step.currentSquare;
+      const rowcol = '(' + (parseInt(num/3) + 1) + ',' + (num%3 + 1) + ')';
+      const desc = move ? 
+      'Go to move #' + move + ' location' + rowcol: 
+      'Go to game start';
       return (
         <li key={move}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
